@@ -16,7 +16,7 @@ class NagiosControllerPlugin(ControllerPluginBase):
     def _exit_wrapper(self, method, arg):
         try:
             exit_codes, output = method(arg)
-        except Exception, e:
+        except Exception as e:
             self._exit(self.UNKNOWN, ["uncaught exception in check function: %s" % e])
 
         self._exit(max(exit_codes), output)
